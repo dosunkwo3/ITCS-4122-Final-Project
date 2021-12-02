@@ -66,7 +66,7 @@ full_source = sourceA.merge(sourceB, how='inner', on='Year')
 full_source = full_source.set_index('Year')
 base = alt.Chart(full_source.reset_index()).encode(x='Year')
 
-alt.layer(
+trend_chart = alt.layer(
     base.mark_line(color='blue', point=alt.OverlayMarkDef(color="yellow")).encode(y=alt.Y('CountA' + ':Q', title='Crime Count'), tooltip=['Year', 'CountA'],),
     base.mark_line(color='red', point=alt.OverlayMarkDef(color="yellow")).encode(y='CountB', tooltip=['Year', 'CountB'])
 ).configure_axis(
